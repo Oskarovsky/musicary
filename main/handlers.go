@@ -57,3 +57,32 @@ func TrackCreate(w http.ResponseWriter, r *http.Request, _ mux.Params) {
 	w.Header().Set("Content-Type", "application/json: charset=UTF-8")
 	w.WriteHeader(http.StatusCreated)
 }
+
+func TestWeb(w http.ResponseWriter, r *http.Request, _ mux.Params) {
+
+	nilMap := map[string]int{}
+	nilMap["Java"] = 1
+	nilMap["C++"] = 2
+	nilMap["Python"]++
+	nilMap["Python"]++
+	nilMap["Python"]++
+
+	fmt.Fprintln(w, " --->>>  ", nilMap["Java"])
+	fmt.Fprintln(w, " --->>>  ", nilMap["C++"])
+	fmt.Fprintln(w, " --->>>  ", nilMap["Python"])
+
+	check := map[string]int{
+		"hello": 1,
+		"world": 10,
+	}
+
+	v, ok := check["hello"]
+	fmt.Println(v, ok)
+
+	v, ok = check["world"]
+	fmt.Println(v, ok)
+
+	v, ok = check["nth"]
+	fmt.Println(v, ok)
+
+}

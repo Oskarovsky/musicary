@@ -13,24 +13,10 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
-	Route{
-		"GET",
-		"/",
-		Index,
-	},
-	Route{
-		"GET",
-		"/tracks",
-		TrackIndex,
-	},
-	Route{
-		"GET",
-		"/tracks/:trackId",
-		TrackShow,
-	},
-	Route{
-		"POST",
-		"/tracks",
-		TrackCreate,
-	},
+	Route{"GET", "/", Index},
+	Route{"GET", "/tracks", TrackIndex},
+	Route{"GET", "/tracks/:trackId", TrackShow},
+	Route{"POST", "/tracks", TrackCreate},
+
+	Route{"GET", "/test", TestWeb},
 }
