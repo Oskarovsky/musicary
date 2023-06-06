@@ -52,7 +52,7 @@ func FindAllTracks() Tracks {
 		}
 	}(c)
 
-	keys, err := c.Do("KEYS", "post:*")
+	keys, err := c.Do("KEYS", "track:*")
 	HandleError(err)
 
 	for _, k := range keys.([]interface{}) {
@@ -77,7 +77,7 @@ func FindTrack(id int) Track {
 			fmt.Println("Error occurred for FindTrack")
 		}
 	}(c)
-	reply, err := c.Do("GET", "post:"+strconv.Itoa(id))
+	reply, err := c.Do("GET", "track:"+strconv.Itoa(id))
 	HandleError(err)
 	fmt.Println("GET OK")
 
@@ -106,7 +106,7 @@ func CreateTrack(t Track) {
 	HandleError(err)
 
 	// Save JSON blob to Redis
-	reply, err := c.Do("SET", "post:"+strconv.Itoa(t.Id), b)
+	reply, err := c.Do("SET", "track:"+strconv.Itoa(t.Id), b)
 	HandleError(err)
 	fmt.Println("GET ", reply)
 }
